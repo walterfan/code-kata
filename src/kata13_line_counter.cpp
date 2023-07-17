@@ -58,7 +58,7 @@ public:
     }
 };
 
-int main(int argc, char** argv) {
+int kata13_line_counter(int argc, char** argv) {
     if(argc < 2) {
         cout << "please input file name" << endl;
     }

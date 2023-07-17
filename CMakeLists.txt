@@ -17,6 +17,7 @@ set(CXX_FLAGS
  -Wall
  -Wextra
  -Wold-style-cast
+ -Wdeprecated-copy
  #-Werror
  -Wconversion
  -Wno-unused-parameter
@@ -46,7 +47,7 @@ find_package(Boost REQUIRED)
 find_package(Protobuf)
 find_package(CURL)
 find_package(ZLIB)
-find_package(GTEST)
+find_package(GTest)
 
 find_path(GMOCK_INCLUDE_DIR gmock/gmock.h)
 find_library(GMOCK_LIBRARY NAMES gmock)
