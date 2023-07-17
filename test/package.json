@@ -1,0 +1,10 @@
+{
+	"name":"hfrtc",
+	"version":"0.0.1",
+	"description":"hefei real time application",
+	"dependencies" : {
+		"socket.io":"~0.9.6",
+		"mime":"~1.2.7"
+	}
+
+}

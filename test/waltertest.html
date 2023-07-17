@@ -1,0 +1,52 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=GBK" />
+<title>PIM - Personal Information Management System</title>
+
+</head>
+
+<body class="lime">
+<div id="main_wrapper">
+<script type="text/javascript">
+
+function random_str()
+{
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for( var i=0; i < 8; i++ )
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+}
+
+var array = new Array();
+for ( var i = 0; i < 1000; i++) 
+{
+	array[array.length] = random_str();
+}
+
+array.sort();
+array.reverse();
+
+document.writeln("len:" + array.length);
+document.writeln("<hr>");
+
+for ( var i = 0; i < array.length; i++)
+{
+	document.writeln(array[i]);
+	document.writeln("<br>");
+	
+}
+</script>
+
+
+</div><!--end main wrapper-->
+
+</body>
+</html>
+
+
+
