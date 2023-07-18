@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(hfrtc C CXX)
+project(kata_cpp C CXX)
 
 enable_testing()
 
@@ -43,8 +43,16 @@ set(CMAKE_CXX_FLAGS_RELEASE "-O2 -DNDEBUG")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 
-find_package(Boost REQUIRED)
-find_package(Protobuf)
+set(CMAKE_CXX_STANDARD 20)
+
+SET(Boost_USE_STATIC_LIBS OFF)
+SET(Boost_USE_MULTITHREAD ON)
+
+add_compile_definitions(BOOST_LOG_DYN_LIN)
+ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)
+
+find_package(Boost REQUIRED COMPONENTS system thread regex log program_options)
+
 find_package(CURL)
 find_package(ZLIB)
 find_package(GTest)
