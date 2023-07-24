@@ -16,7 +16,9 @@ set(CXX_FLAGS
  -D_FILE_OFFSET_BITS=64
  -Wall
  -Wextra
- -Wold-style-cast
+ -Wno-old-style-cast
+ -Wno-unused-variable
+ -Wno-sign-conversion
  -Wdeprecated-copy
  #-Werror
  -Wconversion

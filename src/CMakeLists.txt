@@ -14,6 +14,9 @@ add_executable(complaint-client complaint-client.cpp)
 add_executable(kata_runner
     kata_runner.cpp
     kata01_buffer.cpp
+    kata02_move.cpp
+    kata03_crtp.cpp
+    kata04_logger.cpp
     kata13_line_counter.cpp
 )
 

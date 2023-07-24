@@ -17,12 +17,18 @@ static std::string current_time()
     return ss.str();
 }
 
+#define DECLARE_KATA(name) extern int name(int argc, char** argv)
+#define REGISTER_KATA(name) register_kata(#name, name)
 
-extern int kata01_buffer(int argc, char** argv);
-extern int kata13_line_counter(int argc, char** argv);
+DECLARE_KATA(kata01_buffer);
+DECLARE_KATA(kata02_move);
+DECLARE_KATA(kata03_crtp);
+DECLARE_KATA(kata04_logger);
+DECLARE_KATA(kata13_line_counter);
+
 
 const char* usage = R"name(please specify kata name:
-e.g. ./bin/kata_runner --name kata01
+e.g. ./bin/kata_runner --name kata...
 )name";
 
 
@@ -37,11 +43,11 @@ KataRunner::~KataRunner() {
 }
 
 void KataRunner::init() {
-    register_kata("kata01_buffer", kata01_buffer);
-    register_kata("kata13_line_counter", kata13_line_counter);
-
-
-
+    REGISTER_KATA(kata01_buffer);
+    REGISTER_KATA(kata02_move);
+    REGISTER_KATA(kata03_crtp);
+    REGISTER_KATA(kata04_logger);
+    REGISTER_KATA(kata13_line_counter);
 }
 
 void KataRunner::register_kata(const string& name, const exam_func_t &exam)
