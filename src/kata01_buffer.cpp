@@ -1,3 +1,4 @@
+#include <cstring>
 #include <string>
 #include <iostream>
 #include <type_traits>
@@ -14,7 +15,7 @@ struct NetworkMessage
 
         m_buffer = new char[msg.size()];      // allocate
         m_size =  msg.size();
-        std::memcpy(m_buffer, msg.data(), msg.size()); // populate
+        memcpy(m_buffer, msg.data(), msg.size()); // populate
 
         m_data.assign(msg.begin(), msg.end());
 

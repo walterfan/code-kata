@@ -10,7 +10,6 @@
 #include <memory>
 #include <queue>
 #include <atomic>
-#include <format>
 #include <chrono>
 
 class Logger {
