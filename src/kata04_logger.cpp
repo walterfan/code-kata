@@ -28,11 +28,11 @@ private:
     std::condition_variable m_condtion;
     std::queue<std::string> m_queue;
     std::thread m_thread;
-    std::atomic_flag m_stopped;
+    std::atomic<bool> m_stopped;
     bool m_stdout;
 };
 
-Logger::Logger(): m_stopped(ATOMIC_FLAG_INIT), m_stdout(true) {
+Logger::Logger(): m_stopped(false), m_stdout(true) {
     m_thread = std::thread{&Logger::processLogs, this};
 
 }
@@ -46,16 +46,16 @@ Logger::~Logger() {
 }
 
 bool Logger::isStopped() {
-    return m_stopped.test();
+    return m_stopped.load();
 }
 
 void Logger::stop() {
-    if (m_stopped.test()) {
+    if (m_stopped.load()) {
         return;
     }
-    m_stopped.test_and_set();
-    std::cout << "stop thread " << m_stopped.test() << std::endl;
-    m_stopped.notify_all();
+    m_stopped = true;
+    std::cout << "stop thread " << m_stopped.load() << std::endl;
+    //m_stopped.notify_all();
 }
 
 void Logger::log(std::string msg) {
