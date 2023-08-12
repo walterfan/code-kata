@@ -21,7 +21,7 @@ static std::string current_time()
 #define REGISTER_KATA(name) register_kata(#name, name)
 
 DECLARE_KATA(kata01_buffer);
-DECLARE_KATA(kata02_move);
+DECLARE_KATA(kata02_fib);
 DECLARE_KATA(kata03_crtp);
 DECLARE_KATA(kata04_logger);
 DECLARE_KATA(kata13_line_counter);
@@ -44,7 +44,7 @@ KataRunner::~KataRunner() {
 
 void KataRunner::init() {
     REGISTER_KATA(kata01_buffer);
-    REGISTER_KATA(kata02_move);
+    REGISTER_KATA(kata02_fib);
     REGISTER_KATA(kata03_crtp);
     REGISTER_KATA(kata04_logger);
     REGISTER_KATA(kata13_line_counter);
