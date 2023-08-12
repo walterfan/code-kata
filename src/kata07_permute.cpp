@@ -6,7 +6,7 @@ using namespace std;
 using int_vec = vector<int>;
 using int_2d_vec = vector<vector<int>>;
 
-void bracktrace(vector<int>& numbers, vector<int>& track, int_2d_vec& res) {
+void backtrace(vector<int>& numbers, vector<int>& track, int_2d_vec& res) {
     // reach the leaf node of decision tree
     if (track.size() == numbers.size()) {
         res.push_back(track);
@@ -22,7 +22,7 @@ void bracktrace(vector<int>& numbers, vector<int>& track, int_2d_vec& res) {
         //select the option -- the i_th number
         track.push_back(numbers[i]);
         //go to the decision tree - rest numbers
-        bracktrace(numbers, track, res);
+        backtrace(numbers, track, res);
         //remove the option -- the i_th number
         track.pop_back();
 
@@ -35,7 +35,7 @@ void permute(vector<int>& numbers, int_2d_vec& res) {
     }
 
     vector<int> track;
-    bracktrace(numbers, track, res);
+    backtrace(numbers, track, res);
 }
 
 int kata07_permute(int argc, char** argv) {
