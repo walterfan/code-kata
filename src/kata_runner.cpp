@@ -4,18 +4,16 @@
 #include <sstream> // stringstream
 #include <iomanip> // put_time
 
+#include <boost/log/trivial.hpp>
+#include <boost/log/utility/setup/file.hpp>
+#include <boost/log/expressions.hpp>
+#include <boost/log/utility/setup/common_attributes.hpp>
+
+
 using namespace std;
 namespace po = boost::program_options;
-
-static std::string current_time()
-{
-    auto now = std::chrono::system_clock::now();
-    auto in_time_t = std::chrono::system_clock::to_time_t(now);
-
-    std::stringstream ss;
-    ss << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %H:%M:%S");
-    return ss.str();
-}
+namespace logging = boost::log;
+namespace keywords = boost::log::keywords;
 
 #define DECLARE_KATA(name) extern int name(int argc, char** argv)
 #define REGISTER_KATA(name) register_kata(#name, name)
@@ -24,6 +22,9 @@ DECLARE_KATA(kata01_buffer);
 DECLARE_KATA(kata02_fib);
 DECLARE_KATA(kata03_crtp);
 DECLARE_KATA(kata04_logger);
+DECLARE_KATA(kata05_coin_change);
+DECLARE_KATA(kata06_subset);
+DECLARE_KATA(kata07_permute);
 DECLARE_KATA(kata13_line_counter);
 
 
@@ -31,6 +32,33 @@ const char* usage = R"name(please specify kata name:
 e.g. ./bin/kata_runner --name kata...
 )name";
 
+static std::string current_time() {
+    auto now = std::chrono::system_clock::now();
+    auto in_time_t = std::chrono::system_clock::to_time_t(now);
+
+    std::stringstream ss;
+    ss << std::put_time(std::localtime(&in_time_t), "%Y-%m-%d %H:%M:%S");
+    return ss.str();
+}
+
+void init_logging()
+{
+    logging::register_simple_formatter_factory<logging::trivial::severity_level, char>("Severity");
+
+    logging::add_file_log
+    (
+        keywords::file_name = "kata_runner.log",
+        keywords::format = "[%TimeStamp%] [%ThreadID%] [%Severity%] %Message%",
+        keywords::auto_flush = true
+    );
+
+    logging::core::get()->set_filter
+    (
+        logging::trivial::severity >= logging::trivial::info
+    );
+
+    logging::add_common_attributes();
+}
 
 
 //----------------------- KataRunner ------------------------------//
@@ -47,6 +75,9 @@ void KataRunner::init() {
     REGISTER_KATA(kata02_fib);
     REGISTER_KATA(kata03_crtp);
     REGISTER_KATA(kata04_logger);
+    REGISTER_KATA(kata05_coin_change);
+    REGISTER_KATA(kata06_subset);
+    REGISTER_KATA(kata07_permute);
     REGISTER_KATA(kata13_line_counter);
 }
 
@@ -106,6 +137,7 @@ void KataRunner::display_menu() const {
 
 int main(int argc, char** argv)
 {
+    init_logging();
     unique_ptr<KataRunner> runner = make_unique<KataRunner>();
     runner->init();
 
@@ -122,16 +154,14 @@ int main(int argc, char** argv)
     po::notify(vm);
 
     if (vm.count("help")) {
-        BOOST_LOG_TRIVIAL(trace) << desc << "\n";
+        std::cerr << desc << std::endl;
         return 1;
     }
 
-    boost::log::core::get()->set_filter (
-        boost::log::trivial::severity >= boost::log::trivial::info
-    );
+
 
     if (vm.count("name")) {
-        BOOST_LOG_TRIVIAL(trace) << "* kata name is "<< vm["name"].as<string>() << ".";
+        BOOST_LOG_TRIVIAL(info) << "* kata name is "<< vm["name"].as<string>() << ".";
         runner->execute_kata(vm["name"].as<string>(), argc, argv);
     } else {
         runner->display_menu();

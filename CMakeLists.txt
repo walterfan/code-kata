@@ -34,9 +34,11 @@ set(CXX_FLAGS
 # -stdlib=libc++
  #-rdynamic
  )
+
 if(CMAKE_BUILD_BITS EQUAL 32)
   list(APPEND CXX_FLAGS "-m32")
 endif()
+
 string(REPLACE ";" " " CMAKE_CXX_FLAGS "${CXX_FLAGS}")
 
 if(UNIX AND NOT APPLE)
@@ -57,7 +59,7 @@ SET(Boost_USE_MULTITHREAD ON)
 add_compile_definitions(BOOST_LOG_DYN_LIN)
 ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)
 
-find_package(Boost REQUIRED COMPONENTS system thread regex log program_options)
+find_package(Boost REQUIRED COMPONENTS system thread regex log log_setup program_options)
 
 find_package(CURL)
 find_package(ZLIB)

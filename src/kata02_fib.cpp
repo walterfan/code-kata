@@ -60,6 +60,7 @@ int fib4(int N) {
 
 int kata02_fib(int argc, char** argv) {
     int N = 40;
+    BOOST_LOG_TRIVIAL(info)<<"* kata02_fib: compare 4 different implementation of Fibonacci sequence to " << N ;
     {
       boost::timer::auto_cpu_timer t;
       fib1(N);

@@ -2,7 +2,7 @@
 
 using namespace std;
 
-vector<vector<int> subsets(vector<int>& numbers) {
+vector<vector<int>> subsets(vector<int>& numbers) {
     if (numbers.empty()) {
         return {{}};
     }
@@ -15,13 +15,13 @@ vector<vector<int> subsets(vector<int>& numbers) {
     int size = res.size();
     for (int i = 0; i < size; ++i) {
         res.push_back(res[i]);
-        res.back().push_back(n);
+        res.back().push_back(num);
     }
     return res;
 }
 
 
-int kata05_subset(int argc, char** argv) {
+int kata06_subset(int argc, char** argv) {
 
     //TBD
     return 0;
