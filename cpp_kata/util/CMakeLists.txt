@@ -2,7 +2,11 @@ set(CMAKE_CXX_FLAGS "-Wno-old-style-cast")
 set(CMAKE_CXX_FLAGS "-Wno-unused-variable")
 set(CMAKE_CXX_FLAGS "-Wno-sign-conversion")
 
-set(TinyUtil_SRCS TinyUtil.cpp TinyConfig.cpp TinyTimer.cpp  TinyServer.cpp  TinyClient.cpp  TinyRio.cpp TinyChart.cpp)
+if(APPLE)
+include_directories(/opt/homebrew/Cellar/gd/2.3.3_6/include/)
+endif()
+
+set(TinyUtil_SRCS TinyUtil.cpp TinyConfig.cpp TinyTimer.cpp  TinyServer.cpp  TinyClient.cpp  TinyRio.cpp)
 
 add_library(tinyutil ${TinyUtil_SRCS})
 

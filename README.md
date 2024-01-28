@@ -7,7 +7,16 @@ Dave Thomas 最早提出了 Code Kata 这个想法, Dave 还在他的网站上�
 
 作为一个专业程序员，我还是希望练习一些工作中经常能用得上的套路，例如一些文件修改，图片切割，网络收发的小套路
 
+# C++ Kata
 
+```sh
+pip install conan
+conan install conanfile.txt --build=missing
+
+cd build
+cmake .. -DCMAKE_TOOLCHAIN_FILE=./Release/generators/conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
+cmake --build .
+```
 
 # Reference
 * http://codekata.com/

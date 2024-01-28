@@ -1,0 +1,9 @@
+{
+    "version": 4,
+    "vendor": {
+        "conan": {}
+    },
+    "include": [
+        "/Users/walter/workspace/walter/code-kata/cpp_kata/build/build/Release/generators/CMakePresets.json"
+    ]
+}

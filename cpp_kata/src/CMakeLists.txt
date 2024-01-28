@@ -30,9 +30,9 @@ add_executable(kata_runner
 
 target_link_libraries(kata_runner
     pthread
-    boost_log
     boost_timer
     boost_thread
     boost_program_options
-    boost_log_setup
+    Boost::log_setup 
+    Boost::log
 )

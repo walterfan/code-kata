@@ -61,7 +61,7 @@ int give_complaint(char *source_apartment_id, char *dest_apartment_id,
                    char *remarks);
 int del_complaint(char *source_apartment_id, char *dest_apartment_id);
 void reset_accessed_all(void);
-void error(char *msg);
+void error(const char *msg);
 
 int main(int argc, char **argv) {
   printf("Complaint-server: Hello, World!\n");
@@ -355,7 +355,7 @@ int give_complaint(char *source_apartment_id, char *dest_apartment_id,
   return 0;
 }
 
-void error(char *msg) {
+void error(const char *msg) {
   perror(msg);
   exit(1);
 }
