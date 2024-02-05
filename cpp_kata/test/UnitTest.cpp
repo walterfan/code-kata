@@ -8,6 +8,6 @@ using namespace testing;
 int main(int argc, char** argv) {
   testing::GTEST_FLAG(output)="xml:UnitTestResult.xml";
   printf("--- unit test ---\n");
-  testing::InitGoogleTest();
+  testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

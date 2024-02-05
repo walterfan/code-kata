@@ -25,6 +25,7 @@ DECLARE_KATA(kata04_logger);
 DECLARE_KATA(kata05_coin_change);
 DECLARE_KATA(kata06_subset);
 DECLARE_KATA(kata07_permute);
+DECLARE_KATA(kata08_memory_cache);
 DECLARE_KATA(kata13_line_counter);
 
 
@@ -78,6 +79,7 @@ void KataRunner::init() {
     REGISTER_KATA(kata05_coin_change);
     REGISTER_KATA(kata06_subset);
     REGISTER_KATA(kata07_permute);
+    REGISTER_KATA(kata08_memory_cache);
     REGISTER_KATA(kata13_line_counter);
 }
 
