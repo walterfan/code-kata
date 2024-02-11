@@ -34,6 +34,7 @@ add_executable(kata_runner
     kata07_permute.cpp
     kata08_memory_cache.cpp
     kata13_line_counter.cpp
+    kata14_tokenize.cpp
 )
 
 target_link_libraries(kata_runner

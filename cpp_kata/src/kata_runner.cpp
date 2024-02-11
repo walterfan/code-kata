@@ -27,7 +27,7 @@ DECLARE_KATA(kata06_subset);
 DECLARE_KATA(kata07_permute);
 DECLARE_KATA(kata08_memory_cache);
 DECLARE_KATA(kata13_line_counter);
-
+DECLARE_KATA(kata14_tokenize);
 
 const char* usage = R"name(please specify kata name:
 e.g. ./bin/kata_runner --name kata...
@@ -81,6 +81,7 @@ void KataRunner::init() {
     REGISTER_KATA(kata07_permute);
     REGISTER_KATA(kata08_memory_cache);
     REGISTER_KATA(kata13_line_counter);
+    REGISTER_KATA(kata14_tokenize);
 }
 
 void KataRunner::register_kata(const string& name, const exam_func_t &exam)
@@ -159,8 +160,6 @@ int main(int argc, char** argv)
         std::cerr << desc << std::endl;
         return 1;
     }
-
-
 
     if (vm.count("name")) {
         BOOST_LOG_TRIVIAL(info) << "* kata name is "<< vm["name"].as<string>() << ".";

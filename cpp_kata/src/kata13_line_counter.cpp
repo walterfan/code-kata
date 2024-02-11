@@ -66,5 +66,5 @@ int kata13_line_counter(int argc, char** argv) {
     auto lineCounter = make_unique<LineCounterV2>();
     int lineCount = lineCounter->countLines(argv[1]);
     cout << "line count is " << lineCount << endl;
-
+    return 0;
 }
