@@ -17,42 +17,42 @@ std::string trim(const std::string& str, const std::string& whitespace )
     return str.substr(strBegin, strRange);
 }
 
-void tokenize(const std::string& input, std::vector<std::string>& tokens) {
+int tokenize(const std::string& input, std::vector<std::string>& tokens) {
     bool is_in_quotation = false;
     bool is_delimiter = false;
     size_t input_length = input.length();
     std::ostringstream oss;
-    size_t checked_chars = 0;
+    int count = 0;
     for(size_t i = 0 ; i < input_length; ++i) {
         char c = input[i];
         oss << c;
-        if(c == ' ' || c == ',') {
-            checked_chars ++;
-            if (!is_delimiter && !is_in_quotation) {
-                auto token = oss.str();
-                tokens.push_back(trim(token, " ,\""));
-                oss = std::ostringstream();
-                checked_chars += token.length();
-            }
-            is_delimiter = true;
-        } else {
-            is_delimiter = false;
-        }
-
         if (c == '\"') {
-            checked_chars ++;
             if (!is_in_quotation) {
                 is_in_quotation = true;
             } else {
                 is_in_quotation = false;
             }    
         } 
+        if(c == ' ' || c == ',') {
+   
+            if (!is_delimiter && !is_in_quotation) {
+                auto token = oss.str();
+                count ++;
+                tokens.push_back(trim(token, " ,"));
+                oss = std::ostringstream();
+            }
+            is_delimiter = true;
+        } else {
+            is_delimiter = false;
+        }      
 
     }
-
-    if (checked_chars < input_length) {
-        tokens.push_back(trim(input.substr(checked_chars, input_length), " ,\""));
+    auto left_str = oss.str();
+    if (!left_str.empty()) {
+        count ++;
+        tokens.push_back(trim(left_str, " ,"));
     }
+    return count;
 }
 
 void regex_test(const std::string& input) {
