@@ -1,6 +1,12 @@
 bld/
 build/
 target/
+.mvn/
+.vscode/
+CMakeUserPresets.json
+UnitTestResult.xml
+cache_data.csv
+
 # Prerequisites
 *.d
 

@@ -13,6 +13,8 @@ set(TinyUtil_SRCS
     TinyServer.cpp  
     TinyClient.cpp  
     TinyRio.cpp
+    string_util.cpp
+    time_util.cpp
 )
 
 add_library(tinyutil ${TinyUtil_SRCS})

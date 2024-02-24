@@ -1,4 +1,5 @@
 add_executable(UnitTest UnitTest.cpp 
+    time_util_test.cpp
     server_test.cpp 
     ring_buffer_test.cpp
     TinyUtilTest.cpp  
