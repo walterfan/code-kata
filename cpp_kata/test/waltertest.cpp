@@ -53,6 +53,16 @@ int split(string strValue, string separator, vector<string>& strArr)
     return cnt;
 }
 
+struct FrameDataList {
+    FrameDataList* next = NULL;
+};
+
+struct FrameData {
+    FrameDataList* obj_meta_list = NULL;
+};
+
+
+
 int main(int argc, char *argv[])
 {
     
@@ -64,24 +74,14 @@ int main(int argc, char *argv[])
     } else {
         printf("--launch jouneries--\n");
 	}
-    //EXECUTE_JOURNEY(20141031);
-    
-    string headers = "Acccept: application/json; charset=UTF-8\r\n";
-    headers += "Content-Type: application/json; charset=UTF-8\r\n";
-    headers += "Host: 10.224.2.77";
-    
-    vector<string> strArr;
-    int cnt = split(headers, "\r\n", strArr);
-    cout << "strArr contains: "<<cnt<<endl;
-    
-    for (vector<string>::iterator it = strArr.begin() ; it != strArr.end(); ++it)
-        cout << ' ' << *it<<"\n";
-    cout << '\n';
+    auto frame_meta = new FrameData();
 
-    CTag* ptr = new CTag();
-	cout<<(ptr) <<endl;
-    cout<<(0 != ptr) <<endl;
-    cout<<(!ptr) <<endl;
+    for (auto l_obj = frame_meta->obj_meta_list; l_obj != NULL; l_obj = l_obj->next)
+    {
+        printf("obj_meta_list is null");
+    }
+
+
     return 0;
 }
 
