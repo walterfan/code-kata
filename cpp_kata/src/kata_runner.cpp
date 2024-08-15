@@ -30,6 +30,9 @@ DECLARE_KATA(kata13_line_counter);
 DECLARE_KATA(kata14_tokenize);
 DECLARE_KATA(kata15_thread_pool);
 
+DECLARE_KATA(kata101_add_sum);
+DECLARE_KATA(kata102_add_two_num);
+
 const char* usage = R"name(please specify kata name:
 e.g. ./bin/kata_runner --name kata...
 )name";
@@ -84,6 +87,9 @@ void KataRunner::init() {
     REGISTER_KATA(kata13_line_counter);
     REGISTER_KATA(kata14_tokenize);
     REGISTER_KATA(kata15_thread_pool);
+
+    REGISTER_KATA(kata101_add_sum);
+    REGISTER_KATA(kata102_add_two_num);
 }
 
 void KataRunner::register_kata(const string& name, const exam_func_t &exam)

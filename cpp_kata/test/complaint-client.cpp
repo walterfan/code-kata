@@ -43,7 +43,7 @@ struct message message;
 int sock_fd;
 
 int get_input(void);
-void error(char *msg);
+void error(const char *msg);
 
 int main(int argc, char **argv) {
 
@@ -191,7 +191,7 @@ int get_input(void) {
   }
 }
 
-void error(char *msg) {
+void error(const char *msg) {
   perror(msg);
   exit(1);
 }
