@@ -1,11 +1,10 @@
-#include "TinyUtil.h"
-#include "TinyServer.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <memory>
+#include <climits>
+#include <cstdint>
+#include <iostream>
+#include <vector>
 
 using namespace std;
+
 /*
 
 发现一个发现拼写错误的捷径：
@@ -22,19 +21,19 @@ using namespace std;
 输出描述：
 N行，每行包括一个被修复后的字符串。
 示例1
-输入例子：
-2
-helloo
-wooooooow
-输出例子：
-hello
-woow
+    输入例子：
+    2
+    helloo
+    wooooooow
+    输出例子：
+    hello
+    woow
 示例2
-输入例子：
-1
-nowcoder
-输出例子：
-nowcoder
+    输入例子：
+    1
+    nowcoder
+    输出例子：
+    nowcoder
 */
 enum class SpellPattern {
     kNone,
@@ -101,8 +100,7 @@ public:
     }
 };
 
-int main(int argc, char *argv[])
-{
+int kata105_fix_spell_error(int argc, char** argv) {
 
     std::vector<std::string> lines = {"", "helloo", "wooooooow", "runnner", "nowcoder", "aabbcc"};
 
@@ -113,6 +111,4 @@ int main(int argc, char *argv[])
         cout << str << endl;
     }
     return 0;
-
 }
-

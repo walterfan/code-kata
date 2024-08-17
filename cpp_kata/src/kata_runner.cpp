@@ -32,6 +32,9 @@ DECLARE_KATA(kata15_thread_pool);
 
 DECLARE_KATA(kata101_add_sum);
 DECLARE_KATA(kata102_add_two_num);
+DECLARE_KATA(kata103_min_max);
+DECLARE_KATA(kata104_find_median);
+DECLARE_KATA(kata105_fix_spell_error);
 
 const char* usage = R"name(please specify kata name:
 e.g. ./bin/kata_runner --name kata...
@@ -90,6 +93,9 @@ void KataRunner::init() {
 
     REGISTER_KATA(kata101_add_sum);
     REGISTER_KATA(kata102_add_two_num);
+    REGISTER_KATA(kata103_min_max);
+    REGISTER_KATA(kata104_find_median);
+    REGISTER_KATA(kata105_fix_spell_error);
 }
 
 void KataRunner::register_kata(const string& name, const exam_func_t &exam)

@@ -1,5 +1,5 @@
-#ifndef RUN_EXAMPLE_H_
-#define RUN_EXAMPLE_H_
+#ifndef KATA_RUNNER_H_
+#define KATA_RUNNER_H_
 
 #include <stdio.h>
 #include <stdint.h>
