@@ -1,16 +1,19 @@
+bin/
 bld/
 build/
 dist/
 target/
 .mvn/
 .vscode/
+reports/
+__pycache__/
 CMakeUserPresets.json
 UnitTestResult.xml
 cache_data.csv
 node_modules/
 # Prerequisites
 *.d
-
+*.pyc
 # Compiled Object files
 *.slo
 *.lo

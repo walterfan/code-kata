@@ -20,7 +20,7 @@ Given the root of a binary tree, return the maximum path sum of any non-empty pa
 class Solution {
 public:
     int maxPathSum(TreeNode* root) {
-        
+        return 0;
     }
 };
 

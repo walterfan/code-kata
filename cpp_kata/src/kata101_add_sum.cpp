@@ -48,14 +48,42 @@ public:
         }
         return {-1, -1};
     }
+
+      vector<int> twoSumInSortedArr(vector<int>& nums, int target) {
+
+        int left = 0;
+        int right = nums.size() - 1;
+
+        while(left < right) {
+            int sum = nums[left] + nums[right];
+            if (sum == target) {
+                return {left, right};
+            } else if (sum < target) {
+                left++;
+            } else if (sum > target) {
+                right--;
+            }
+        }
+        return {};
+
+    }
 };
 
 int kata101_add_sum(int argc, char** argv) {
-    vector<int> nums = {2,7,11,15};
-    int target = 9;
-    Solution s;
-    vector<int> res = s.twoSum(nums, target);
-    cout << "nums={2,7,11,15} , target=9, res: " << res[0] << ", " << res[1] << endl;
 
+    Solution s;
+    vector<int> nums= {3,2,4};
+    int target = 6;
+    vector<int> res = s.twoSum(nums, target);
+    cout << "nums={3,2,4} , target=6, twoSum res: " << res[0] << ", " << res[1] << endl;
+
+    nums = {2,7,11,15};
+    target = 9;
+
+    res = s.twoSum(nums, target);
+    cout << "nums={2,7,11,15} , target=9, twoSum res: " << res[0] << ", " << res[1] << endl;
+
+    res = s.twoSumInSortedArr(nums, target);
+    cout << "nums={2,7,11,15} , target=9, twoSumInSortedArr res: " << res[0] << ", " << res[1] << endl;
     return 0;
 }

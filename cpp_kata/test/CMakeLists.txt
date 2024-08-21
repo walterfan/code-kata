@@ -18,13 +18,14 @@ else()
     message(STATUS "Not Linux with inotify")
 endif()
 
-add_executable(UnitTest UnitTest.cpp
+add_executable(unit_test UnitTest.cpp
+    kata_helper_test.cpp
     time_util_test.cpp
     server_test.cpp 
     ring_buffer_test.cpp
     TinyUtilTest.cpp  
     TinyConfigTest.cpp)
-target_link_libraries(UnitTest tinyutil gtest)
+target_link_libraries(unit_test tinyutil kata_util gtest)
 
 add_executable(complaint-server complaint-server.cpp)
 add_executable(complaint-client complaint-client.cpp)

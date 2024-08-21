@@ -15,26 +15,12 @@ namespace po = boost::program_options;
 namespace logging = boost::log;
 namespace keywords = boost::log::keywords;
 
-#define DECLARE_KATA(name) extern int name(int argc, char** argv)
-#define REGISTER_KATA(name) register_kata(#name, name)
 
-DECLARE_KATA(kata01_buffer);
-DECLARE_KATA(kata02_fib);
-DECLARE_KATA(kata03_crtp);
-DECLARE_KATA(kata04_logger);
-DECLARE_KATA(kata05_coin_change);
-DECLARE_KATA(kata06_subset);
-DECLARE_KATA(kata07_permute);
-DECLARE_KATA(kata08_memory_cache);
-DECLARE_KATA(kata13_line_counter);
-DECLARE_KATA(kata14_tokenize);
-DECLARE_KATA(kata15_thread_pool);
+#define REGISTER_KATA(name) do { \
+    extern int name(int argc, char** argv);\
+    register_kata(#name, name); \
+} while(0)
 
-DECLARE_KATA(kata101_add_sum);
-DECLARE_KATA(kata102_add_two_num);
-DECLARE_KATA(kata103_min_max);
-DECLARE_KATA(kata104_find_median);
-DECLARE_KATA(kata105_fix_spell_error);
 
 const char* usage = R"name(please specify kata name:
 e.g. ./bin/kata_runner --name kata...
@@ -96,6 +82,11 @@ void KataRunner::init() {
     REGISTER_KATA(kata103_min_max);
     REGISTER_KATA(kata104_find_median);
     REGISTER_KATA(kata105_fix_spell_error);
+
+    REGISTER_KATA(kata106_max_path_sum);
+    REGISTER_KATA(kata107_long_sub_str);
+    REGISTER_KATA(kata108_two_pointers);
+    REGISTER_KATA(kata109_palindrome);
 }
 
 void KataRunner::register_kata(const string& name, const exam_func_t &exam)

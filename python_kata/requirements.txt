@@ -1,0 +1,12 @@
+html-testRunner==1.2.1
+paramiko==3.4.0
+paho-mqtt==1.6.1
+tabulate==0.8.10
+urllib3==1.26.18
+requests==2.31.0
+dataclasses==0.6
+pyyaml==6.0.1
+loguru==0.7.2
+selenium==4.20.0
+unittest-xml-reporting==3.2.0
+junit2html==31.0.1
