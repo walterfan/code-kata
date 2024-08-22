@@ -35,7 +35,7 @@ public:
                 tmp_res.push_back(nums[i] / nums[i + 1]);
             }
             for (int j = 0; j < tmp_res.size(); ++j) {
-                vector<int> new_nums(nums);
+                vector<float> new_nums(nums);
                 new_nums[i] = tmp_res[j];
                 new_nums.erase(new_nums.begin() + i + 1);
                 if (compute(new_nums)) {
@@ -64,7 +64,8 @@ public:
     vector<vector<int>> permuteUnique(vector<int>& nums) {
         vector<vector<int>> res;
         vector<int> track;
-        backtrace(nums, track, res);
+        vector<bool> visited;
+        backtrace(nums, track, visited, res);
         return res;
     }
 

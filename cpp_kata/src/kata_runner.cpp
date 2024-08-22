@@ -76,6 +76,7 @@ void KataRunner::init() {
     REGISTER_KATA(kata13_line_counter);
     REGISTER_KATA(kata14_tokenize);
     REGISTER_KATA(kata15_thread_pool);
+    REGISTER_KATA(kata16_knapsack);
 
     REGISTER_KATA(kata101_add_sum);
     REGISTER_KATA(kata102_add_two_num);

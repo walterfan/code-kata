@@ -10,25 +10,14 @@ import yaml_config
 import test_util
 from tabulate import tabulate
 from loguru import logger
+from basic_algo import binary_search
 
 logger.add(sys.stdout,
            format="{time} {message}",
            filter="client",
            level="DEBUG")
 
-def binary_search(arr, target):
-    low, high = 0, len(arr) - 1
 
-    while low <= high:
-        mid = (low + high) // 2
-        if arr[mid] == target:
-            return mid
-        elif arr[mid] < target:
-            low = mid + 1
-        else:
-            high = mid - 1
-
-    return -1
 
 
 class ShellSortTest(unittest.TestCase):
