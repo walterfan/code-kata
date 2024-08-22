@@ -73,6 +73,11 @@ void KataRunner::init() {
     REGISTER_KATA(kata06_subset);
     REGISTER_KATA(kata07_permute);
     REGISTER_KATA(kata08_memory_cache);
+
+    REGISTER_KATA(kata09_24_point);
+    REGISTER_KATA(kata10_prime);
+    REGISTER_KATA(kata11_link_list);
+    REGISTER_KATA(kata12_tree_path_sum);
     REGISTER_KATA(kata13_line_counter);
     REGISTER_KATA(kata14_tokenize);
     REGISTER_KATA(kata15_thread_pool);
@@ -88,6 +93,7 @@ void KataRunner::init() {
     REGISTER_KATA(kata107_long_sub_str);
     REGISTER_KATA(kata108_two_pointers);
     REGISTER_KATA(kata109_palindrome);
+
 }
 
 void KataRunner::register_kata(const string& name, const exam_func_t &exam)

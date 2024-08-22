@@ -9,6 +9,7 @@ using namespace std;
 
 int coinChange(const std::vector<int>& coins, int amount) {
     // 初始化dp数组，大小为amount + 1，初始值为amount + 1（表示无法凑出）
+    // dp[i]表示凑出金额 i 所需的最少硬币数
     std::vector<int> dp(amount + 1, amount + 1);
     dp[0] = 0; // 金额为0时需要0个硬币
 
@@ -16,7 +17,8 @@ int coinChange(const std::vector<int>& coins, int amount) {
     for (int i = 1; i <= amount; ++i) {
         for (const int& coin : coins) {
             if (i - coin >= 0) {
-                dp[i] = std::min(dp[i], dp[i - coin] + 1);
+                dp[i] = std::min(dp[i], // 不选择当前硬币, dp[i] 的值不变
+                    dp[i - coin] + 1); // 选择当前硬币, dp[i] 的值更新为 dp[i - coin] + 1
             }
         }
     }
