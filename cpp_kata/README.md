@@ -1,0 +1,4 @@
+# C++ Kata
+
+* kata
+* exam

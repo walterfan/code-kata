@@ -10,3 +10,5 @@ loguru==0.7.2
 selenium==4.20.0
 unittest-xml-reporting==3.2.0
 junit2html==31.0.1
+fastapi
+uvicorn

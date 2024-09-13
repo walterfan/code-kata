@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 Example</title>
+    <script src="https://unpkg.com/vue@next"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #app {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+        }
+        textarea, input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+        textarea {
+            height: 300px; /* Increased height for the textarea */
+        }
+        button {
+            width: calc(50% - 5px);
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        button:first-child {
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <input v-model="textBaseUrl" placeholder="Enter Base URL"/>
+        <input v-model="textApiKey" placeholder="Enter API Key"/>
+
+        <textarea v-model="textMsg" placeholder="Enter Message"></textarea>
+
+        <div style="display: flex; justify-content: space-between;">
+            <button @click="sendHttpRequest">Send HTTP Request</button>
+            <button @click="sendWebSocketMessage">Send WebSocket Message</button>
+        </div>
+    </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    textBaseUrl: 'http://localhost:3000/api/test/ask_question',
+                    textApiKey: '1234567890',
+                    textMsg: '',
+                    websocket: null
+                }
+            },
+            methods: {
+                async sendHttpRequest() {
+                    try {
+                        const response = await fetch(this.textBaseUrl, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(this.textMsg)
+                        });
+                        const data = await response.json();
+                        console.log('HTTP Response:', data);
+                    } catch (error) {
+                        console.error('HTTP Request Error:', error);
+                    }
+                },
+                sendWebSocketMessage() {
+                    if (!this.websocket) {
+                        this.websocket = new WebSocket(this.textBaseUrl);
+
+                        this.websocket.onopen = () => {
+                            console.log('WebSocket connection opened');
+                            this.websocket.send(JSON.stringify(this.textMsg));
+                        };
+                        
+                        this.websocket.onmessage = (event) => {
+                            console.log('WebSocket Message Received:', event.data);
+                        };
+
+                        this.websocket.onerror = (error) => {
+                            console.error('WebSocket Error:', error);
+                        };
+
+                        this.websocket.onclose = () => {
+                            console.log('WebSocket connection closed');
+                            this.websocket = null;
+                        };
+                    } else {
+                        this.websocket.send(JSON.stringify({
+                            text: this.textMsg,
+                            value: this.textBaseUrl
+                        }));
+                    }
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

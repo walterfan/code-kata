@@ -13,7 +13,7 @@ def generate_unique_filename():
 
 def main():
 
-    suite = unittest.defaultTestLoader.discover('.', pattern='test*.py')
+    suite = unittest.defaultTestLoader.discover('./test', pattern='test*.py')
 
     report_file = generate_unique_filename()
 

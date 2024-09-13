@@ -1,12 +1,18 @@
 
 #include <iostream>
-#include <unordered_map>
 #include <vector>
-#include <queue>
-#include <numeric>
-#include "kata_helper.h"
+
 using namespace std;
 
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
 
 void dfs(TreeNode* node, std::vector<int>& path, std::vector<std::string>& paths) {
     if (!node) return;

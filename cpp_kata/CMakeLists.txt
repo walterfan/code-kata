@@ -61,7 +61,7 @@ SET(Boost_USE_MULTITHREAD ON)
 #add_compile_definitions(BOOST_LOG_DYN_LIN)
 #ADD_DEFINITIONS(-DBOOST_LOG_DYN_LINK)
 
-find_package(Boost REQUIRED COMPONENTS system thread regex log log_setup program_options)
+find_package(Boost REQUIRED COMPONENTS system thread regex log log_setup program_options asio beast)
 
 find_package(CURL)
 find_package(ZLIB)
@@ -78,7 +78,6 @@ find_library(BOOSTTEST_LIBRARY NAMES boost_unit_test_framework)
 find_library(BOOSTPO_LIBRARY NAMES boost_program_options)
 find_path(TCMALLOC_INCLUDE_DIR gperftools/heap-profiler.h)
 find_library(TCMALLOC_LIBRARY NAMES tcmalloc_and_profiler)
-
 
 include_directories(${Boost_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR})
@@ -108,6 +107,7 @@ endif()
 add_subdirectory(src)
 add_subdirectory(util)
 add_subdirectory(test)
+add_subdirectory(exam)
 
 
 
