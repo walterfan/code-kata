@@ -6,9 +6,38 @@ Dave Thomas - "The Pragmatic Programmer "一书的作者, 提出了 Code Kata �
 
 作为一个专业程序员，我还是希望练习一些工作中经常能用得上的套路，例如一些文件修改，图片切割，网络收发的小套路, 故而在此做一些套路的整理和收集
 
+## Structure
 
-## More
-* [kata of c++](https://github.com/walterfan/kata-cpp)
-* [kata of java](https://github.com/walterfan/kata-java)
-* [kata of python](https://github.com/walterfan/kata-python)
-* [kata of web including js, ts, html and css](https://github.com/walterfan/kata-web)
+This repository is organized as a collection of git submodules, each covering a different language or topic:
+
+| Submodule | Language / Topic | Repository |
+|-----------|-----------------|------------|
+| [kata-cpp](./kata-cpp) | C++ | https://github.com/walterfan/kata-cpp |
+| [kata-java](./kata-java) | Java | https://github.com/walterfan/kata-java |
+| [kata-python](./kata-python) | Python | https://github.com/walterfan/kata-python |
+| [kata-go](./kata-go) | Go | https://github.com/walterfan/kata-go |
+| [kata-rust](./kata-rust) | Rust | https://github.com/walterfan/kata-rust |
+| [kata-web](./kata-web) | JS / TS / HTML / CSS | https://github.com/walterfan/kata-web |
+| [kata-app](./kata-app) | Application | https://github.com/walterfan/kata-app |
+
+The `example/` folder contains legacy code (cpp_kata, go_kata, java_kata, js_kata, python_kata) that has been migrated into the individual submodule repositories above.
+
+## Getting Started
+
+Clone this repository with all submodules:
+
+```bash
+git clone --recurse-submodules git@github.com:walterfan/code-kata.git
+```
+
+If you already cloned without submodules, initialize them with:
+
+```bash
+git submodule update --init --recursive
+```
+
+To pull the latest changes for all submodules:
+
+```bash
+git submodule update --remote --merge
+```

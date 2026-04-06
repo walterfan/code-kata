@@ -1,0 +1,21 @@
+[submodule "kata-java"]
+	path = kata-java
+	url = git@github.com:walterfan/kata-java.git
+[submodule "kata-go"]
+	path = kata-go
+	url = git@github.com:walterfan/kata-go.git
+[submodule "kata-python"]
+	path = kata-python
+	url = git@github.com:walterfan/kata-python.git
+[submodule "kata-rust"]
+	path = kata-rust
+	url = git@github.com:walterfan/kata-rust.git
+[submodule "kata-web"]
+	path = kata-web
+	url = git@github.com:walterfan/kata-web.git
+[submodule "kata-cpp"]
+	path = kata-cpp
+	url = git@github.com:walterfan/kata-cpp.git
+[submodule "kata-app"]
+	path = kata-app
+	url = git@github.com:walterfan/kata-app.git
